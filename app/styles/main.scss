@@ -1,0 +1,124 @@
+$icon-font-path: '../fonts/';
+
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+body {
+  background-image: url("../images/me-looking-at-phone.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  .welcome {
+    height: 100vh;
+
+    .small-icons {
+      padding: 20px 50px;
+
+      i.fa.fa-github, i.fa.fa-file-text, i.fa.fa-linkedin {
+        color: #fff;
+        font-size: 2em;
+        padding-right: 20px;
+      }
+    }
+
+    .welcome-text {
+      font-family: 'Hammersmith One', sans-serif;
+      color: #fff;
+      padding: 6%;
+      margin-left: 12%;
+
+      h1 {
+        font-size: 5em;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      span{
+        animation: blink 1s infinite;
+        display: inline;
+        font-size: 1em;
+      }
+    }
+
+    .explore-text {
+      font-family: "Ezo 2", sans-serif;
+      text-align: center;
+      margin-top: 5px;
+
+      a {
+        font-size: 2em;
+        border: 1px solid #fff;
+        padding: 15px 50px;
+        color: #fff;
+        font-weight: 100;
+      }
+    }
+  }
+
+  #explore {
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    padding-top: 5%;
+
+    h2 {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    span {
+      animation: blink 1s infinite;
+      display: inline;
+      font-size: 1em;
+    }
+
+    h3 {
+      font-family: "Hammersmith One", sans-serif;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 10%;
+    }
+
+    p {
+      font-family: "Ezo 2", sans-serif;
+    }
+
+    .container {
+      padding: 40px;
+    }
+  }
+
+  .type-animation {
+    animation: type 4s steps(60, end);
+  }
+
+  .fade-in-animation {
+    animation: fadein 5s;
+  }
+
+  .fade-up-animation {
+    animation: fadein 5s,
+               moveup 5s;
+  }
+}
+
+/* Animations */
+@keyframes type {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes moveup {
+  0% { transform: translateY(40px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes blink {
+  to { opacity: 0; }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
