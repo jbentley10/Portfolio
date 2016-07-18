@@ -39,15 +39,22 @@ body {
         cursor: pointer;
       }
 
-      .subnav {
-        color: #333;
-        font-size: .85em;
-      }
-
       @media (max-width: 991px) {
         padding: 0;
         margin: 0;
       }
+    }
+
+    li {
+      font-size: .85em;
+
+      a {
+        color: #d0d0d0;
+      }
+    }
+
+    a:hover {
+      color: #999;
     }
 
     a.--explore-active {
@@ -82,16 +89,13 @@ body {
     li {
       margin: 15px -5px -15px;
       padding-bottom: 5px;
+      color: #d0d0d0;
     }
 
-    .subnav {
-      font-size: 1.25em;
-      opacity: 0;
+    a.subnav {
+      font-size: 1em;
       transition: .5s;
-
-      li {
-        color: #d0d0d0;
-      }
+      color: #d0d0d0;
     }
 
     @media (max-width: 991px) {

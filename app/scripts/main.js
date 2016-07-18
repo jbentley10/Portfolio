@@ -15,26 +15,47 @@ $(document).ready(function() {
     });
   });
 
-  $('.web-nav-button').hover(function() {
+  $('span.web-trigger').hover(function() {
     $('.web-nav-button').css("height", "110px");
-    $('.web-nav-button').css("width", "50%");
-    $('.web-nav-button a.subnav').css("opacity", "1");
+    $('ul.web-nav-button').css("color", "#999");
+    $('.web-nav-button a.subnav').css("color", "#fff");
+    /* jshint multistr: true */
+    $('ul.web-nav-button').append("\
+      <li><a class='subnav research'>&nbsp;Research</a></li>\
+      <li><a class='subnav personas'>&nbsp;Personas</a></li>\
+      <li><a class='subnav webpages'>&nbsp;Webpages</a></li>\
+    ");
   });
 
-  $('.web').mouseout(function() {
+  $('.web').mouseleave(function() {
     $('.web-nav-button').css("height", "0");
-    $('.web-nav-button').css("width", "auto");
-    $('.web-nav-button a.subnav').css("opacity", "0");
+    $('ul.web-nav-button').css("color", "#fff");
+
+    /* jshint multistr: true */
+    $('ul.web-nav-button').children().remove();
   });
 
-  $('.games-nav-button').hover(function() {
+  $('span.games-trigger').hover(function() {
     $('.games-nav-button').css("height", "185px");
-    $('.games-nav-button a.subnav').css("opacity", "1");
+    $('.games-nav-button').css("width", "50%");
+    $('ul.games-nav-button').css("color", "#999");
+    $('.games-nav-button a.subnav').css("color", "#fff");
+
+    /* jshint multistr: true */
+    $('ul.games-nav-button').append("\
+      <li><a class='subnav webpages'>&nbsp;Webpages</a></li>\
+      <li><a class='subnav flash'>&nbsp;Flash</a></li>\
+      <li><a class='subnav mobile'>&nbsp;Mobile</a></li>\
+      <li><a class='subnav prototypes'>&nbsp;Prototypes</a></li>\
+      <li><a class='subnav user-testing'>&nbsp;User Testing</a></li>\
+    ");
   });
 
-  $('.games').mouseout(function() {
+  $('.games').mouseleave(function() {
     $('.games-nav-button').css("height", "0");
-    $('.games-nav-button a.subnav').css("opacity", "0");
+    $('ul.games-nav-button').css("color", "#fff");
+
+    $('ul.games-nav-button').children().remove();
   });
 
   $(document).on('click', '.card-image', function(e) {
