@@ -3,6 +3,14 @@ $(document).ready(function() {
 
   checkIfInView();
 
+  $(document).on('click', '.portfolio-item', function(e) {
+    var className = $(this).attr('class');
+
+    if (className.indexOf("style-guide")) {
+        console.log("shit seeker");
+    }
+  });
+
   $(document).on('click', '.back-arrow', function(e) {
     e.preventDefault();
 
@@ -25,6 +33,19 @@ $(document).ready(function() {
       <li><a class='subnav personas'>&nbsp;Personas</a></li>\
       <li><a class='subnav webpages'>&nbsp;Webpages</a></li>\
     ");
+
+    if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
+      $('.sticky-nav ul').addClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#333');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#333');
+      checkIfInView();
+    } else {
+      $('.sticky-nav ul').removeClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#fff');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#fff');
+    }
   });
 
   $('.web').mouseleave(function() {
@@ -33,6 +54,19 @@ $(document).ready(function() {
 
     /* jshint multistr: true */
     $('ul.web-nav-button').children().remove();
+
+    if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
+      $('.sticky-nav ul').addClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#333');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#333');
+      checkIfInView();
+    } else {
+      $('.sticky-nav ul').removeClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#fff');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#fff');
+    }
   });
 
   $('span.games-trigger').hover(function() {
@@ -49,6 +83,19 @@ $(document).ready(function() {
       <li><a class='subnav prototypes'>&nbsp;Prototypes</a></li>\
       <li><a class='subnav user-testing'>&nbsp;User Testing</a></li>\
     ");
+
+    if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
+      $('.sticky-nav ul').addClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#333');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#333');
+      checkIfInView();
+    } else {
+      $('.sticky-nav ul').removeClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#fff');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#fff');
+    }
   });
 
   $('.games').mouseleave(function() {
@@ -56,6 +103,19 @@ $(document).ready(function() {
     $('ul.games-nav-button').css("color", "#fff");
 
     $('ul.games-nav-button').children().remove();
+
+    if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
+      $('.sticky-nav ul').addClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#333');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#333');
+      checkIfInView();
+    } else {
+      $('.sticky-nav ul').removeClass('--explore-active');
+      $('.sticky-nav ul').css('color', '#fff');
+      $('.sticky-nav a').addClass('--explore-active');
+      $('.sticky-nav a').css('color', '#fff');
+    }
   });
 
   $(document).on('click', '.card-image', function(e) {
