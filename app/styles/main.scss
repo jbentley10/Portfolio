@@ -39,25 +39,14 @@ body {
         cursor: pointer;
       }
 
+      .subnav {
+        color: #333;
+        font-size: .85em;
+      }
+
       @media (max-width: 991px) {
         padding: 0;
         margin: 0;
-      }
-    }
-
-    .web-nav-button {
-      &:hover {
-        .research, .personas, .webpages {
-          opacity: 1;
-        }
-      }
-    }
-
-    .games-nav-button {
-      &:hover {
-        .webpages, .flash, .mobile, .prototypes, .user-testing {
-          opacity: 1;
-        }
       }
     }
 
@@ -81,30 +70,27 @@ body {
       }
     }
 
-    .web, .games {
+    ul {
+      list-style-type: none;
+      padding: 0;
       height: 20px;
       width: 20%;
       padding-bottom: 0;
       transition: .5s;
+    }
 
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
+    li {
+      margin: 15px -5px -15px;
+      padding-bottom: 5px;
+    }
+
+    .subnav {
+      font-size: 1.25em;
+      opacity: 0;
+      transition: .5s;
 
       li {
-        margin: 15px -5px -15px;
-        padding-bottom: 5px;
-      }
-
-      .subnav {
-        font-size: 1.25em;
-        opacity: 0;
-        transition: .5s;
-
-        li {
-          color: #d0d0d0;
-        }
+        color: #d0d0d0;
       }
     }
 

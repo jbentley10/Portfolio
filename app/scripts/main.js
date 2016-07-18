@@ -15,6 +15,28 @@ $(document).ready(function() {
     });
   });
 
+  $('.web-nav-button').hover(function() {
+    $('.web-nav-button').css("height", "110px");
+    $('.web-nav-button').css("width", "50%");
+    $('.web-nav-button a.subnav').css("opacity", "1");
+  });
+
+  $('.web-nav-button').mouseout(function() {
+    $('.web-nav-button').css("height", "0");
+    $('.web-nav-button').css("width", "auto");
+    $('.web-nav-button a.subnav').css("opacity", "0");
+  });
+
+  $('.games-nav-button').hover(function() {
+    $('.games-nav-button').css("height", "175px");
+    $('.games-nav-button a.subnav').css("opacity", "1");
+  });
+
+  $('.games-nav-button').mouseout(function() {
+    $('.games-nav-button').css("height", "0");
+    $('.games-nav-button a.subnav').css("opacity", "0");
+  });
+
   $(document).on('click', '.card-image', function(e) {
     var className = $(this).attr('class');
     $('.work-pictures').remove();
@@ -92,9 +114,15 @@ $(document).ready(function() {
 
      if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
        $('.sticky-nav ul').addClass('--explore-active');
+       $('.sticky-nav ul').css('color', '#333');
+       $('.sticky-nav a').addClass('--explore-active');
+       $('.sticky-nav a').css('color', '#333');
        checkIfInView();
      } else {
        $('.sticky-nav ul').removeClass('--explore-active');
+       $('.sticky-nav ul').css('color', '#fff');
+       $('.sticky-nav a').addClass('--explore-active');
+       $('.sticky-nav a').css('color', '#fff');
      }
 
      if (checkIfInView2($('.small-icons'), $('#explore'))) {
