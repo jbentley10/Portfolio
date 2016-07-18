@@ -86,7 +86,7 @@ $(document).ready(function() {
       $('.card-type.development').removeClass('--hidden');
       $('.card-type.webpage').removeClass('--hidden');
       $('.card-type.personas').removeClass('--hidden');
-      
+
       $('.card-type.webpage').removeClass('--hidden');
       $('.card-type.mobile').removeClass('--hidden');
       $('.card-type.flash').removeClass('--hidden');
@@ -164,7 +164,8 @@ $(document).ready(function() {
       // Keep the navigation boxes that relate to research
       $('.--webpage').removeClass('--hidden');
 
-      $('.card-type.development').addClass('--hidden');
+      $('.card-type.mobile').addClass('--hidden');
+      $('.card-type.flash').addClass('--hidden');
       $('.card-type.webpage').removeClass('--hidden');
     }
 
