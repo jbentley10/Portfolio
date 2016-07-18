@@ -23,7 +23,7 @@ body {
     top: 45%;
     width: 100%;
 
-    a {
+    ul, a {
       color: #fff;
       padding: 0;
       font-weight: 300;
@@ -45,7 +45,7 @@ body {
       }
     }
 
-    a.web-nav-button {
+    .web-nav-button {
       &:hover {
         .research, .personas, .webpages {
           opacity: 1;
@@ -53,7 +53,7 @@ body {
       }
     }
 
-    a.games-nav-button {
+    .games-nav-button {
       &:hover {
         .webpages, .flash, .mobile, .prototypes, .user-testing {
           opacity: 1;
