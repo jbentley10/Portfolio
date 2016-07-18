@@ -1,12 +1,12 @@
 // generated on 2016-05-22 using generator-webapp 2.1.0
-const gulp = require('gulp');
-const gulpLoadPlugins = require('gulp-load-plugins');
-const browserSync = require('browser-sync');
-const del = require('del');
-const wiredep = require('wiredep').stream;
+var gulp = require('gulp');
+var gulpLoadPlugins = require('gulp-load-plugins');
+var browserSync = require('browser-sync');
+var del = require('del');
+var wiredep = require('wiredep').stream;
 
-const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
+var $ = gulpLoadPlugins();
+var reload = browserSync.reload;
 
 gulp.task('styles', function () {
   return gulp.src('app/styles/*.scss')
@@ -19,7 +19,7 @@ gulp.task('styles', function () {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('app/css'))
     .pipe(reload({stream: true}));
 });
 
