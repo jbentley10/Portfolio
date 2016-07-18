@@ -21,18 +21,18 @@ $(document).ready(function() {
     $('.web-nav-button a.subnav').css("opacity", "1");
   });
 
-  $('.web-nav-button').mouseout(function() {
+  $('.web').mouseout(function() {
     $('.web-nav-button').css("height", "0");
     $('.web-nav-button').css("width", "auto");
     $('.web-nav-button a.subnav').css("opacity", "0");
   });
 
   $('.games-nav-button').hover(function() {
-    $('.games-nav-button').css("height", "175px");
+    $('.games-nav-button').css("height", "185px");
     $('.games-nav-button a.subnav').css("opacity", "1");
   });
 
-  $('.games-nav-button').mouseout(function() {
+  $('.games').mouseout(function() {
     $('.games-nav-button').css("height", "0");
     $('.games-nav-button a.subnav').css("opacity", "0");
   });
