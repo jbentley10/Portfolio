@@ -5,9 +5,247 @@ $(document).ready(function() {
 
   $(document).on('click', '.portfolio-item', function(e) {
     var className = $(this).attr('class');
+    console.log(className);
 
-    if (className.indexOf("style-guide")) {
-        console.log("shit seeker");
+    page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+       page.stop();
+    });
+
+    if (className.indexOf("staff-corner") >= 0) {
+      $('html, body').animate({ scrollTop: $('.staff-corner-title').offset().top }, 2000, function() {
+        page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+      });
+    } else if (className.indexOf("next") >= 0) {
+      $('html, body').animate({ scrollTop: $('.card-image .next').offset().top }, 2000, function() {
+        page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+      });
+    } else if (className.indexOf("style-guide") >= 0) {
+      $('html, body').animate({ scrollTop: $('.card-image .style-guide').offset().top }, 2000, function() {
+        page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+      });
+    } else if (className.indexOf("cocooned") >= 0) {
+      $('html, body').animate({ scrollTop: $('.cocooned-title').offset().top }, 2000, function() {
+        page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+      });
+    } else if (className.indexOf("tractor-tipping") >= 0) {
+      $('html, body').animate({ scrollTop: $('.tractor-tipping-title').offset().top }, 2000, function() {
+        page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+      });
+    } else if (className.indexOf("project-warp") >= 0) {
+      $('html, body').animate({ scrollTop: $('.card-image .project-warp').offset().top }, 2000, function() {
+        page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+      });
+    }
+  });
+
+  $(document).on('click', '.nav-element', function(e) {
+    var className = $(this).attr('class');
+
+    // If you click "Web Development"
+    if (className.indexOf("web") >= 0) {
+      $('.web-expanded').removeClass('--hidden');
+      $('.--web-development').removeClass('--hidden');
+
+      // Remove the content related to games
+      $('.games-expanded').addClass('--hidden');
+
+      // Remove box navigation related to games
+      $('.--game-development').addClass('--hidden');
+
+      $('.card-type.development').removeClass('--hidden');
+      $('.card-type.webpage').removeClass('--hidden');
+      $('.card-type.personas').removeClass('--hidden');
+    }
+
+    // If you click "Game Development"
+    if (className.indexOf("games") >= 0) {
+      console.log("clicked: " + className);
+      $('.games-expanded').removeClass('--hidden');
+      $('.games-expanded').removeClass('hidden');
+      $('.--game-development').removeClass('--hidden');
+
+      // Remove the content related to games
+      $('.web-expanded').addClass('--hidden');
+
+      // Remove box navigation related to games
+      $('.--web-development').addClass('--hidden');
+
+      $('.card-type.webpage').removeClass('--hidden');
+      $('.card-type.mobile').removeClass('--hidden');
+      $('.card-type.flash').removeClass('--hidden');
+    }
+
+    // If you click "Show All"
+    if (className.indexOf("all") >= 0) {
+      $('.web-expanded').removeClass('--hidden');
+      $('.games-expanded').removeClass('--hidden');
+
+      $('.--web-development').removeClass('--hidden');
+      $('.--game-development').removeClass('--hidden');
+
+      $('.card-type.development').removeClass('--hidden');
+      $('.card-type.webpage').removeClass('--hidden');
+      $('.card-type.personas').removeClass('--hidden');
+      
+      $('.card-type.webpage').removeClass('--hidden');
+      $('.card-type.mobile').removeClass('--hidden');
+      $('.card-type.flash').removeClass('--hidden');
+    }
+  });
+
+  $(document).on('click', '.subnav', function(e) {
+    var className = $(this).attr('class');
+
+    page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+       page.stop();
+    });
+
+    if (className.indexOf("research") >= 0) {
+      $('.card-type .development').removeClass('--hidden');
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+      $('.--game-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.card-type').addClass('--hidden');
+      $('.web-expanded').removeClass('--hidden');
+      $('.games-expanded').addClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--personas').removeClass('--hidden');
+      $('.--user-testing').removeClass('--hidden');
+
+      $('.personas').removeClass('--hidden');
+    }
+
+    if (className.indexOf("personas") >= 0) {
+      $('.card-type .development').removeClass('--hidden');
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+      $('.--game-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.card-type').addClass('--hidden');
+      $('.web-expanded').removeClass('--hidden');
+      $('.games-expanded').addClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--personas').removeClass('--hidden');
+      $('.--user-testing').removeClass('--hidden');
+
+      $('.personas').removeClass('--hidden');
+    }
+
+    if (className.indexOf("webpages") >= 0) {
+      $('.card-type .development').removeClass('--hidden');
+      // Remove all of the navigation boxes
+      $('.--game-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.games-expanded').removeClass('--hidden');
+      $('.games-expanded').addClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--webpage').removeClass('--hidden');
+
+      $('.development').removeClass('--hidden');
+    }
+
+    // GAME DEVELOPMENT
+    // WEBPAGES
+    if (className.indexOf("web-game") >= 0) {
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.web-expanded').addClass('--hidden');
+      $('.games-expanded').removeClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--webpage').removeClass('--hidden');
+
+      $('.card-type.development').addClass('--hidden');
+      $('.card-type.webpage').removeClass('--hidden');
+    }
+
+    // GAME DEVELOPMENT
+    // Flash
+    if (className.indexOf("flash") >= 0) {
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.web-expanded').addClass('--hidden');
+      $('.games-expanded').removeClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--flash').removeClass('--hidden');
+      $('.--web').addClass('--hidden');
+      $('.--mobile').addClass('--hidden');
+
+      $('.card-type.mobile').addClass('--hidden');
+      $('.card-type.webpage').addClass('--hidden');
+      $('.card-type.flash').removeClass('--hidden');
+    }
+
+    // GAME DEVELOPMENT
+    // Mobile
+    if (className.indexOf("mobile") >= 0) {
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.web-expanded').addClass('--hidden');
+      $('.games-expanded').removeClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--mobile').removeClass('--hidden');
+      $('.--web').addClass('--hidden');
+      $('.--flash').addClass('--hidden');
+
+      $('.card-type.flash').addClass('--hidden');
+      $('.card-type.webpage').addClass('--hidden');
+      $('.card-type.mobile').removeClass('--hidden');
+    }
+
+    // GAME DEVELOPMENT
+    // Prototypes
+    if (className.indexOf("prototypes") >= 0) {
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.web-expanded').addClass('--hidden');
+      $('.games-expanded').removeClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--mobile').removeClass('--hidden');
+      $('.--flash').removeClass('--hidden');
+      $('.--web').addClass('--hidden');
+
+      $('.card-type.webpage').addClass('--hidden');
+      $('.card-type.flash').removeClass('--hidden');
+      $('.card-type.mobile').removeClass('--hidden');
+    }
+
+    // GAME DEVELOPMENT
+    // User Testing
+    if (className.indexOf("user-testing") >= 0) {
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+
+      // Remove all of the main content
+      $('.web-expanded').addClass('--hidden');
+      $('.games-expanded').removeClass('--hidden');
+
+      // Keep the navigation boxes that relate to research
+      $('.--flash').removeClass('--hidden');
+      $('.--mobile').addClass('--hidden');
+      $('.--web').addClass('--hidden');
+
+      $('.card-type.webpage').addClass('--hidden');
+      $('.card-type.mobile').addClass('--hidden');
+      $('.card-type.flash').removeClass('--hidden');
     }
   });
 
@@ -77,7 +315,7 @@ $(document).ready(function() {
 
     /* jshint multistr: true */
     $('ul.games-nav-button').append("\
-      <li><a class='subnav webpages'>&nbsp;Webpages</a></li>\
+      <li><a class='subnav web-game'>&nbsp;Webpages</a></li>\
       <li><a class='subnav flash'>&nbsp;Flash</a></li>\
       <li><a class='subnav mobile'>&nbsp;Mobile</a></li>\
       <li><a class='subnav prototypes'>&nbsp;Prototypes</a></li>\
