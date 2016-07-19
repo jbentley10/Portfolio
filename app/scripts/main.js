@@ -42,6 +42,10 @@ $(document).ready(function() {
     var className = $(this).attr('class');
     console.log(className);
 
+    page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+       page.stop();
+    });
+
     $('html, body').animate({ scrollTop: $('#explore').offset().top }, 2000, function() {
       page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
     });
@@ -102,6 +106,10 @@ $(document).ready(function() {
     var className = $(this).attr('class');
 
     $('.--hidden').removeClass('--hidden');
+
+    page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+       page.stop();
+    });
 
     $('html, body').animate({ scrollTop: $('#explore').offset().top }, 2000, function() {
       page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
