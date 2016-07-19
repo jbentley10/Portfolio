@@ -23,7 +23,7 @@ body {
     top: 45%;
     width: 100%;
 
-    ul, a {
+    ul, a, span {
       color: #fff;
       padding: 0;
       font-weight: 300;
@@ -33,6 +33,7 @@ body {
       font-weight: 100;
       z-index: 0;
       white-space: nowrap;
+      animation: none;
 
       &:hover {
         color: #999;
@@ -70,15 +71,13 @@ body {
       margin: 0;
 
       .row {
-        padding-bottom: 5vh;
-
         &:last-of-type {
           padding-bottom: 0;
         }
       }
     }
 
-    ul {
+    ul, span {
       list-style-type: none;
       padding: 0;
       height: 20px;
@@ -308,7 +307,7 @@ body {
     background-size: cover;
     background-position: bottom right;
 
-    span {
+    .blinking-cursor {
       animation: blink 1s infinite;
     }
 

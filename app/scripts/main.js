@@ -38,8 +38,13 @@ $(document).ready(function() {
     }
   });
 
-  $(document).on('click', '.nav-element', function(e) {
+  $(document).on('click', '.trigger', function(e) {
     var className = $(this).attr('class');
+    console.log(className);
+
+    $('html, body').animate({ scrollTop: $('#explore').offset().top }, 2000, function() {
+      page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+    });
 
     // If you click "Web Development"
     if (className.indexOf("web") >= 0) {
@@ -96,33 +101,34 @@ $(document).ready(function() {
   $(document).on('click', '.subnav', function(e) {
     var className = $(this).attr('class');
 
-    page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
-       page.stop();
+    $('.--hidden').removeClass('--hidden');
+
+    $('html, body').animate({ scrollTop: $('#explore').offset().top }, 2000, function() {
+      page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
     });
 
     if (className.indexOf("research") >= 0) {
-      $('.card-type .development').removeClass('--hidden');
-      // Remove all of the navigation boxes
-      $('.--web-development').addClass('--hidden');
-      $('.--game-development').addClass('--hidden');
+      $('.card-type.development').addClass('--hidden');
+      $('.card-type.wireframe').addClass('--hidden');
 
-      // Remove all of the main content
-      $('.card-type').addClass('--hidden');
-      $('.web-expanded').removeClass('--hidden');
+      // Remove all of the games content
       $('.games-expanded').addClass('--hidden');
 
       // Keep the navigation boxes that relate to research
-      $('.--personas').removeClass('--hidden');
+      $('.--personas').addClass('--hidden');
       $('.--user-testing').removeClass('--hidden');
 
-      $('.personas').removeClass('--hidden');
+      $('.persona').addClass('--hidden');
+
+      // Remove all of the navigation boxes
+      $('.--web-development').addClass('--hidden');
+      $('.--game-development').addClass('--hidden');
     }
 
     if (className.indexOf("personas") >= 0) {
       $('.card-type .development').removeClass('--hidden');
       // Remove all of the navigation boxes
       $('.--web-development').addClass('--hidden');
-      $('.--game-development').addClass('--hidden');
 
       // Remove all of the main content
       $('.card-type').addClass('--hidden');
@@ -134,6 +140,11 @@ $(document).ready(function() {
       $('.--user-testing').removeClass('--hidden');
 
       $('.personas').removeClass('--hidden');
+      $('.research').addClass('--hidden');
+
+      $('.subnav.research').removeClass('--hidden');
+
+      $('.--game-development').addClass('--hidden');
     }
 
     if (className.indexOf("webpages") >= 0) {
@@ -145,8 +156,14 @@ $(document).ready(function() {
       $('.games-expanded').removeClass('--hidden');
       $('.games-expanded').addClass('--hidden');
 
-      // Keep the navigation boxes that relate to research
+      // Keep the navigation boxes that relate to webpages
       $('.--webpage').removeClass('--hidden');
+      $('.--personas').addClass('--hidden');
+      $('.--user-testing').addClass('--hidden');
+
+      $('.persona').addClass('--hidden');
+      $('.user-testing').addClass('--hidden');
+      $('.card.research').addClass('--hidden');
 
       $('.development').removeClass('--hidden');
     }
@@ -156,13 +173,14 @@ $(document).ready(function() {
     if (className.indexOf("web-game") >= 0) {
       // Remove all of the navigation boxes
       $('.--web-development').addClass('--hidden');
+      $('.--game-development').addClass('--hidden');
 
       // Remove all of the main content
       $('.web-expanded').addClass('--hidden');
       $('.games-expanded').removeClass('--hidden');
 
       // Keep the navigation boxes that relate to research
-      $('.--webpage').removeClass('--hidden');
+      $('.--game-development.--web').removeClass('--hidden');
 
       $('.card-type.mobile').addClass('--hidden');
       $('.card-type.flash').addClass('--hidden');
@@ -192,6 +210,7 @@ $(document).ready(function() {
     // GAME DEVELOPMENT
     // Mobile
     if (className.indexOf("mobile") >= 0) {
+      console.log("oh yeah clicked mobile.");
       // Remove all of the navigation boxes
       $('.--web-development').addClass('--hidden');
 
@@ -264,24 +283,26 @@ $(document).ready(function() {
 
   $('span.web-trigger').hover(function() {
     $('.web-nav-button').css("height", "110px");
-    $('ul.web-nav-button').css("color", "#999");
+    $('span.web-nav-button').css("color", "#999");
     $('.web-nav-button a.subnav').css("color", "#fff");
     /* jshint multistr: true */
-    $('ul.web-nav-button').append("\
-      <li><a class='subnav research'>&nbsp;Research</a></li>\
-      <li><a class='subnav personas'>&nbsp;Personas</a></li>\
-      <li><a class='subnav webpages'>&nbsp;Webpages</a></li>\
-    ");
+    if (!$('.subnav').length) {
+      $('ul.web-nav-button').append("\
+        <li><a class='subnav research'>&nbsp;Research</a></li>\
+        <li><a class='subnav personas'>&nbsp;Personas</a></li>\
+        <li><a class='subnav webpages'>&nbsp;Webpages</a></li>\
+      ");
+    }
 
     if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
-      $('.sticky-nav ul').addClass('--explore-active');
-      $('.sticky-nav ul').css('color', '#333');
+      $('.sticky-nav span').addClass('--explore-active');
+      $('.sticky-nav span').css('color', '#333');
       $('.sticky-nav a').addClass('--explore-active');
       $('.sticky-nav a').css('color', '#333');
       checkIfInView();
     } else {
-      $('.sticky-nav ul').removeClass('--explore-active');
-      $('.sticky-nav ul').css('color', '#fff');
+      $('.sticky-nav span').removeClass('--explore-active');
+      $('.sticky-nav span').css('color', '#fff');
       $('.sticky-nav a').addClass('--explore-active');
       $('.sticky-nav a').css('color', '#fff');
     }
@@ -289,7 +310,7 @@ $(document).ready(function() {
 
   $('.web').mouseleave(function() {
     $('.web-nav-button').css("height", "0");
-    $('ul.web-nav-button').css("color", "#fff");
+    $('span.web-nav-button').css("color", "#fff");
 
     /* jshint multistr: true */
     $('ul.web-nav-button').children().remove();
@@ -314,14 +335,16 @@ $(document).ready(function() {
     $('ul.games-nav-button').css("color", "#999");
     $('.games-nav-button a.subnav').css("color", "#fff");
 
-    /* jshint multistr: true */
-    $('ul.games-nav-button').append("\
-      <li><a class='subnav web-game'>&nbsp;Webpages</a></li>\
-      <li><a class='subnav flash'>&nbsp;Flash</a></li>\
-      <li><a class='subnav mobile'>&nbsp;Mobile</a></li>\
-      <li><a class='subnav prototypes'>&nbsp;Prototypes</a></li>\
-      <li><a class='subnav user-testing'>&nbsp;User Testing</a></li>\
-    ");
+    if (!$('.subnav').length) {
+      /* jshint multistr: true */
+      $('ul.games-nav-button').append("\
+        <li><a class='subnav animated fadeInLeft web-game'>&nbsp;Webpages</a></li>\
+        <li><a class='subnav animated fadeInLeft flash'>&nbsp;Flash</a></li>\
+        <li><a class='subnav animated fadeInLeft mobile'>&nbsp;Mobile</a></li>\
+        <li><a class='subnav animated fadeInLeft prototypes'>&nbsp;Prototypes</a></li>\
+        <li><a class='subnav animated fadeInLeft user-testing'>&nbsp;User Testing</a></li>\
+      ");
+    }
 
     if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
       $('.sticky-nav ul').addClass('--explore-active');
@@ -434,13 +457,13 @@ $(document).ready(function() {
 
      if (checkIfInView2($('.sticky-nav'), $('#explore'))) {
        $('.sticky-nav ul').addClass('--explore-active');
-       $('.sticky-nav ul').css('color', '#333');
+       $('.sticky-nav span').css('color', '#333');
        $('.sticky-nav a').addClass('--explore-active');
        $('.sticky-nav a').css('color', '#333');
        checkIfInView();
      } else {
        $('.sticky-nav ul').removeClass('--explore-active');
-       $('.sticky-nav ul').css('color', '#fff');
+       $('.sticky-nav span').css('color', '#fff');
        $('.sticky-nav a').addClass('--explore-active');
        $('.sticky-nav a').css('color', '#fff');
      }
@@ -452,7 +475,7 @@ $(document).ready(function() {
      }
   });
 
-  $(document).on('click', '.nav-element', function(e) {
+  $(document).on('click', '.trigger', function(e) {
     // Scroll to portfolio
     page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
       page.stop();
@@ -480,8 +503,8 @@ $(document).ready(function() {
     var className = $(this).attr('class');
 
     switch(className) {
-        case 'web-nav-button animated nav-element fadeInLeft fadeInLeft-1':
-        case 'web-nav-button animated nav-element fadeInLeft fadeInLeft-1 --explore-active':
+        case 'trigger web-trigger animated fadeInLeft fadeInLeft-1':
+        case 'trigger web-trigger animated fadeInLeft fadeInLeft-1 --explore-active':
           // Show the explore title that we want to see,
           // dim the others
           $item1 = '.web-design';
@@ -496,8 +519,8 @@ $(document).ready(function() {
 
           break;
 
-        case 'games-nav-button animated nav-element fadeInLeft fadeInLeft-3':
-        case 'games-nav-button animated nav-element fadeInLeft fadeInLeft-3 --explore-active':
+        case 'trigger games-trigger animated fadeInLeft fadeInLeft-2':
+        case 'trigger games-trigger animated fadeInLeft fadeInLeft-2 --explore-active':
           // Show the explore title that we want to see,
           // dim the others
           $item1 = '.web';
