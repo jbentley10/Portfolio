@@ -3,7 +3,8 @@ var gulp = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
 var browserSync = require('browser-sync');
 var del = require('del');
-var wiredep = require('wiredep').stream;
+var wiredep = require('wiredep').stream
+const imagemin = require('gulp-imagemin');;
 
 var $ = gulpLoadPlugins();
 var reload = browserSync.reload;
@@ -107,6 +108,12 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], function() {
       }
     }
   });
+
+  gulp.task('default', () =>
+    gulp.src('src/images/*')
+      .pipe(imagemin())
+      .pipe(gulp.dest('dist/images'))
+  );
 
   gulp.watch([
     'app/*.html',
