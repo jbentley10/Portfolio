@@ -1,5 +1,4 @@
 # Portfolio2.0
-# Portfolio2.0
 
 **Installation Guide**
 * From https://github.com/yeoman/generator-webapp#readme *
