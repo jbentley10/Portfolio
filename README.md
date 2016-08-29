@@ -1,5 +1,7 @@
 # Portfolio2.0
 
+This webpage contains the work of John Bentley. Enjoy! 
+
 **Installation Guide**
 * From https://github.com/yeoman/generator-webapp#readme *
 1. Install dependencies: npm install --global yo gulp-cli bower
@@ -10,3 +12,4 @@
 6. Run gulp serve:test to run the tests in the browser
 7. Run gulp to build your webapp for production
 8. Run gulp serve:dist to preview the production build
+
